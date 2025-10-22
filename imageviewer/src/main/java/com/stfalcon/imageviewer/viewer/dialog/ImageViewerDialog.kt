@@ -25,6 +25,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.stfalcon.imageviewer.R
 import com.stfalcon.imageviewer.viewer.builder.BuilderData
 import com.stfalcon.imageviewer.viewer.view.ImageViewerView
@@ -69,10 +70,13 @@ internal class ImageViewerDialog<T>(
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
         )
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
-        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                or View.SYSTEM_UI_FLAG_FULLSCREEN)
+        // Haal controller op
+        val controller = WindowInsetsControllerCompat(window, window.decorView)
+
+        controller.hide(WindowInsetsCompat.Type.systemBars())
+
         dialog.show()
 
         window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);

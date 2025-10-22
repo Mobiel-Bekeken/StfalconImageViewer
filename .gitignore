@@ -36,3 +36,7 @@ build/
 .gradle
 .idea/deploymentTargetSelector.xml
 .idea/other.xml
+.idea/appInsightsSettings.xml
+.kotlin
+.idea/inspectionProfiles
+.idea/deviceManager.xml
